@@ -1,6 +1,8 @@
 # Proyecto: Inventario Escolar
 
-Este proyecto es una aplicación web desarrollada con Django para la gestión de inventario de equipos tecnológicos en un entorno escolar.
+Este proyecto es una aplicación web desarrollada con el framework Django, diseñada específicamente para abordar la necesidad del Colegio Andes del Sur de gestionar de manera eficiente su inventario de equipos tecnológicos. La problemática central que resuelve esta aplicación es la dificultad en el control y la actualización de datos, ya que el colegio actualmente maneja esta información en planillas manuales.
+
+Como solución, esta aplicación web utiliza Django para permitir el registro, consulta y administración de los equipos tecnológicos utilizados en las salas y laboratorios del colegio. Se ha configurado correctamente la conexión a la base de datos y se utiliza el panel de administración de Django (Django Admin) para facilitar la gestión de estos equipos.
 
 ## Repositorio del Proyecto
 
