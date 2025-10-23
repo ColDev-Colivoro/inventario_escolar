@@ -1,107 +1,95 @@
-# Gestión de Inventario Escolar
+# Inventario Escolar
 
-Esta aplicación web, desarrollada con Django, permite gestionar el inventario de equipos tecnológicos en un colegio. Facilita el registro, consulta y administración de equipos, reemplazando la gestión manual en planillas.
+Sistema de gestión de inventario para equipos escolares desarrollado con Django.
 
-## Caso de Uso
+## Propósito del Proyecto
 
-El Colegio Andes del Sur requiere una aplicación web para gestionar su inventario de equipos tecnológicos. Actualmente, la información se mantiene en planillas, lo que dificulta el control y la actualización de los datos. Esta aplicación busca centralizar y facilitar la administración de estos equipos.
+Este proyecto tiene como objetivo principal proporcionar una solución robusta y fácil de usar para la administración del inventario de equipos tecnológicos dentro de una institución educativa. Permite registrar, categorizar, rastrear el estado y la ubicación de cada equipo, facilitando así una gestión eficiente de los recursos.
 
-## Requisitos Previos
+## Características Principales
 
-*   Python 3.x instalado.
-*   Django instalado (`pip install django`).
+*   Registro detallado de equipos (nombre, categoría, estado, fecha de ingreso, ubicación).
+*   Interfaz de administración de Django para la gestión de datos.
+*   Base de datos persistente (SQLite por defecto).
 
-## Configuración del Proyecto
+## Requisitos del Sistema
 
-1.  **Crear el proyecto Django:**
-    Si el proyecto `inventario_escolar` no existe, créalo con:
-    ```bash
-    django-admin startproject inventario_escolar
-    ```
-    Si ya existe, asegúrate de estar dentro del directorio `inventario_escolar`.
+*   Python 3.8+
+*   Django 5.2.7
 
-2.  **Crear la aplicación `equipos`:**
-    Dentro del directorio raíz del proyecto (`inventario_escolar`), ejecuta:
-    ```bash
-    python manage.py startapp equipos
-    ```
-    *Nota: Si recibes un error indicando que el nombre `equipos` ya existe, puede que ya se haya creado. Verifica la estructura de directorios.*
+## Instalación y Configuración
 
-3.  **Configurar `settings.py`:**
-    Abre el archivo `inventario_escolar/settings.py` y agrega `'equipos'` a la lista `INSTALLED_APPS`:
-    ```python
-    INSTALLED_APPS = [
-        # ... otras apps de Django
-        "django.contrib.admin",
-        "django.contrib.auth",
-        "django.contrib.contenttypes",
-        "django.contrib.sessions",
-        "django.contrib.messages",
-        "django.contrib.staticfiles",
-        "inventario_escolar", # Esta línea puede variar si el proyecto se creó con otro nombre
-        "equipos", # Añade esta línea
-    ]
-    ```
-    La configuración de la base de datos (`DATABASES`) por defecto utiliza SQLite, lo cual es adecuado para este proyecto.
-
-4.  **Ejecutar Migraciones:**
-    Aplica las migraciones iniciales y las de tu aplicación:
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    ```
-
-5.  **Crear Superusuario:**
-    Para acceder al panel de administración de Django, crea un superusuario:
-    ```bash
-    python manage.py createsuperuser
-    ```
-    Sigue las instrucciones para ingresar un nombre de usuario, correo electrónico (opcional) y contraseña.
-
-## Modelo `Equipo`
-
-La aplicación `equipos` define un modelo `Equipo` con los siguientes campos:
-
-*   `nombre` (CharField): Nombre del equipo (ej. "Proyector X1").
-*   `categoria` (CharField): Categoría del equipo (ej. "Proyector", "Notebook", "Impresora").
-*   `estado` (CharField): Estado actual del equipo (ej. "Operativo", "En reparación", "Dado de baja").
-*   `fecha_ingreso` (DateField): Fecha en que el equipo fue ingresado al inventario.
-*   `ubicacion` (CharField): Ubicación física del equipo (ej. "Sala 201", "Laboratorio 3").
-
-## Administración de Equipos
-
-1.  **Iniciar el servidor de desarrollo:**
-    ```bash
-    python manage.py runserver
-    ```
-
-2.  **Acceder al panel de administración:**
-    Abre tu navegador web y visita: `http://127.0.0.1:8000/admin/`
-
-3.  **Iniciar sesión:**
-    Utiliza las credenciales del superusuario que creaste.
-
-4.  **Gestionar equipos:**
-    En el panel de administración, podrás ver la sección "Equipos" (si registraste el modelo correctamente en `equipos/admin.py`). Desde allí, puedes agregar nuevos equipos, editar los existentes y eliminarlos.
-
-## Estructura del Proyecto
-
+### 1. Clonar el Repositorio (si aplica)
+```bash
+# git clone <url_del_repositorio>
+# cd inventario_escolar
 ```
-inventario_escolar/
-├── manage.py
-├── inventario_escolar/
-│   ├── __init__.py
-│   ├── asgi.py
-│   ├── settings.py
-│   ├── urls.py
-│   └── wsgi.py
-└── equipos/
-    ├── __init__.py
-    ├── admin.py       # Configuración del panel de administración
-    ├── apps.py
-    ├── models.py      # Definición del modelo Equipo
-    ├── tests.py
-    ├── views.py
-    └── migrations/    # Archivos de migración de la base de datos
-        ├── __init__.py
-        └── 0001_initial.py
+*(Nota: Asumo que el proyecto ya está en el directorio actual, por lo que este paso puede ser omitido si el código ya está presente.)*
+
+### 2. Crear y Activar un Entorno Virtual
+Se recomienda utilizar un entorno virtual para aislar las dependencias del proyecto.
+
+```bash
+# Crear el entorno virtual (si no existe)
+python -m venv venv
+
+# Activar el entorno virtual:
+# En Windows:
+venv\Scripts\activate
+# En macOS/Linux:
+# source venv/bin/activate
+```
+
+### 3. Instalar Dependencias
+Instala todas las librerías necesarias utilizando pip.
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configurar la Base de Datos
+Django utiliza SQLite por defecto, por lo que no se requiere una configuración adicional de base de datos para empezar. Sin embargo, es necesario ejecutar las migraciones para crear las tablas necesarias.
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 5. Crear un Superusuario (para acceder al admin)
+Para acceder al panel de administración de Django, necesitas crear un superusuario.
+
+```bash
+python manage.py createsuperuser
+```
+Sigue las instrucciones para ingresar el nombre de usuario, correo electrónico (opcional) y contraseña.
+
+## Ejecución del Proyecto
+
+### 1. Iniciar el Servidor de Desarrollo
+Ejecuta el siguiente comando para iniciar el servidor de desarrollo de Django.
+
+```bash
+python manage.py runserver
+```
+
+### 2. Acceder a la Aplicación
+Una vez que el servidor esté en ejecución, podrás acceder a la aplicación web en tu navegador en la siguiente dirección:
+
+*   **Panel de Administración**: `http://127.0.0.1:8000/admin/`
+
+## Diagrama de la Estructura del Modelo
+
+```mermaid
+classDiagram
+    class Equipo {
+        +nombre: str
+        +categoria: str
+        +estado: str
+        +fecha_ingreso: date
+        +ubicacion: str
+    }
+```
+
+## Documentación del Código
+
+El código fuente ha sido documentado con comentarios explicativos en archivos relevantes como `models.py`, `admin.py` y `settings.py` para facilitar la comprensión y el mantenimiento del proyecto.
