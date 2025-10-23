@@ -21,7 +21,7 @@ Este proyecto tiene como objetivo principal proporcionar una solución robusta y
 
 ### 1. Clonar el Repositorio (si aplica)
 ```bash
-# git clone <url_del_repositorio>
+# git clone https://github.com/ColDev-Colivoro/inventario_escolar.git
 # cd inventario_escolar
 ```
 *(Nota: Asumo que el proyecto ya está en el directorio actual, por lo que este paso puede ser omitido si el código ya está presente.)*
